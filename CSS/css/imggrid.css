@@ -1,0 +1,23 @@
+.card{
+    position: relative;
+    width: 250px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px gray;
+    transition: 0.3s;
+}
+
+.badge{
+    position: absolute;
+    background: red;
+    right: 10px;
+    top: 10px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 2;
+}
+.card:hover{
+    transform: translate(10px);
+}

@@ -1,0 +1,32 @@
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    width: 600px;
+    margin: auto;
+    gap: 30px;
+}
+.box{
+    position: relative;
+}
+
+.box img{
+    width: 210px;
+    height: 150px;
+    transition: 0.4s;
+}
+
+.box:hover img{
+    transform: scale(1.2);
+}
+
+.box::after{
+    content: "View Image";
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    color: white;
+    font-size: 18px;
+    opacity: 0;
+    transition: 0.4s;
+}

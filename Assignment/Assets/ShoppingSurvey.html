@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Shopping Survey</title>
+</head>
+<body>
+    <center>
+    <form method="post">
+        
+        <fieldset><hr><h1>Shopping Survey</h1>  
+            <hr>
+        <table>
+            <tr>
+                <td><label for="text">Name:</label></td>
+                <td><input type="text" id="text" name="name"></td>
+            </tr>
+            <tr>
+                <td><label for="text">DOB:</label></td>
+                <td><input type="date" id="dob" name="dob"></td>
+            </tr>
+            <tr>
+                <td><label for="text">Company Type:</label></td>
+                <td><select name="type" id="type">
+                    <option value="clothing" selected disabled>Type</option>
+                    <option value="gov">Goverment</option>
+                    <option value="private">Private</option>
+                    <option value="self">Self Employed</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td><label for="salary">Annual Income:</label></td>
+                <td><input type="number" id="salary" name="salary"></td>
+            </tr>
+            <tr>
+                <td><label for="type">Prefered Shopping Method:</label></td>
+                <td><input type="checkbox" name="shopping_method">Online</td>
+                <td><input type="checkbox" name="shopping_method">Offline</td>
+            </tr>
+            <tr>
+                <td><label for="type">Mostly shop at</label></td>
+                <td><input type="radio" name="shop_at" value="mall">Mall
+                    <input type="radio" name="shop_at" id="shop_at_local" value="local">Local Market
+                    <input type="radio" name="shop_at" id="shop_at_online" value="online">Online</td>
+            </tr>
+            <tr>
+                <td><label for="type" >what category do you mostly shop in?</label></td>
+                <td><select name="category" id="category">
+                    <option value="clothing" selected disabled>Category</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="home">Home & Kitchen</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td><label for="type"></label></td>
+            </tr>
+            <tr>
+                <td><label for="comment">Comments:</label></td>
+                <td><textarea name="comment" id="comment" rows="4" cols="50"></textarea></td>
+            </tr>
+            </table>
+            <table >
+                <thead>
+                    <tr>
+                        <td><input type="submit" value="Submit"></td>
+                        <td><input type="reset" value="Reset"></td>
+                    </tr>
+                </thead>
+            </table>
+            <table border="4">
+                <legend>Have A Good Day</legend>
+                <h3>Survey Results</h3>
+                <thead>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Company Type</th>
+                    <th>Annual Income</th>
+                    <th>Shopping Method</th>
+                    <th>Shop At</th>
+                    <th>Category</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Leon Infant B</td>
+                        <td>1990-05-15</td>
+                        <td>Private</td>
+                        <td>50000</td>
+                        <td>Online</td>
+                        <td>Mall</td>
+                        <td>Clothing</td>
+                    </tr>
+                    <tr>
+                        <td>Pranesh</td>
+                        <td>1985-05-15</td>
+                        <td>Government</td>
+                        <td>70000</td>
+                        <td>Online</td>
+                        <td>Mall</td>
+                        <td>Electronics</td>
+                    </tr>
+                </tbody>
+            </table>
+            </fieldset>
+            </center>
+</body>
+</html>

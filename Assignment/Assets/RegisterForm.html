@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Register Form</title>
+    </head>
+    <body>
+        <center>
+        <hr>
+        <h1>College Event Registration Form</h1>
+        <hr>
+        <form action="Success.html" method="post">
+            <label for="type">Enter your Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="type">Enter your Registration Number:</label>
+            <input type="number" id="regno" name="regno" required><br><br>
+            <label for="number">Enter your Year of Study:</label>
+            <input type="number" max=4 id="year" name="year" required><br><br>
+            <label for="text">Enter the Department:</label>
+            <select name="department" id="departmentSelect">
+                <option value="Enter Department" disabled selected>Enter Department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Chemical Engineering">Chemical Engineering</option>
+            </select><br><br>
+            <label for="type">Enter your Email:</label>
+            <input type="email" id="Email" name="Email" required><br><br>
+            <label for="type">Enter your Phone Number:</label>
+            <input type="number" id="phone" name="phone" required><br><br>
+            <label for="type">Enter your Event Name:</label>
+            <select name="event" id="eventSelect">
+                <option value="" disabled selected>Enter Event Name</option>
+                <option value="Paper Presentation">Paper Presentation</option>
+                <option value="Technical Quiz">Technical Quiz</option>
+                <option value="Coding Challenge">Coding Challenge</option>
+                <option value="Robotics Competition">Robotics Competition</option>
+                <option value="Hackathon">Hackathon</option>
+            </select><br><br>
+            <label for="type">Enter Team Members:</label>
+            <input type="number" max=4 id="teamMembers" name="teamMembers" required><br><br>
+            <label for="type">Team Leader Name:</label>
+            <input type="text" id="teamLeader" name="teamLeader" required><br><br>
+            <label for="type">Enter your Class-Co Name:</label>
+            <input type="text" id="classCoName" name="classCoName" required><br><br>
+            <input type="submit" value="Register Now">
+        </form>
+
+        </center>
+    </body>
+</html>

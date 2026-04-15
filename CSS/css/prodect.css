@@ -1,0 +1,52 @@
+.items{
+    background-color: black;
+     width: 210vh;
+     height: 80vh;
+     padding: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 50px;
+     
+}
+.box{
+    color: blue;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    width: 200px;
+    height: auto;
+    padding: 30px;
+}
+
+.items img{
+    width: 150px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items1{
+    background-color: black;
+     width: 220vh;
+     height: 110vh;
+     padding: 20px;
+     gap: 100px;
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+}
+
+.items1 img{
+    width: 150px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+

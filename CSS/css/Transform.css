@@ -1,0 +1,41 @@
+.buttonnew{
+    background-color: black;
+    color: aliceblue;
+    padding: 20px;
+    width: 200px;
+}
+
+.buttonnew:hover{
+    background-color: aliceblue;
+    color: black;
+}
+
+
+.imgnew img{
+    width: 400px;
+    transition:2s;
+}
+
+
+.imgnew img:hover{
+    transform: scale(1.1);
+
+}
+
+
+.leon{
+    font-size: larger;
+}
+
+.leon::first-letter{
+    background-color: black;
+    color: aliceblue;
+}
+
+.leon1{
+    font-size: larger;
+}
+
+.leon1::after{
+    content: "🔥";
+}
