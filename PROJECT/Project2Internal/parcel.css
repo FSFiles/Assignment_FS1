@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.header{
+    background-color: hsl(19, 100%, 50%);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.body{
+    background-color: rgb(4, 51, 89);
+    background-repeat: no-repeat;
+    background-size: 1250px;
+}
+.title{
+    color: #0c0560;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.button1{
+    background-color: #F97316;
+    width: 120px;
+    border-radius: 15px;
+}
+
+.button1:hover{
+    transition: 1s;
+    background-color: aliceblue;
+    color: #eeff00;
+}
+
+.button2{
+    background-color: #FFFFFF;
+    color: #F97316;
+}
+
+.cards{
+    
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 1200px;
+}
+
+.cards1{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 0px;
+    width: 350px;
+    height: auto;
+
+}
+
+.cards1 img{
+    width: 350px;
+}
+
+.cards2{
+    background-color: rgb(212, 213, 215);
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: small;
+    
+}
+
+.cards3{
+    padding: 10px;
+}
+
+.cards2 img{
+    width: 20px;
+}
+
+.cards21 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cards22 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button3{
+    background-color: orange;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.field{
+    background-color: #ff4800;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.files{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.butto{
+    background-color:#ff4800;
+    color: #0c0560;
+    width: 70px;
+    padding: 10px;
+    border-radius: 15px;
+}
+.butto:hover{
+    background-color: #0c0560;
+    color: #ff4800;
+    transition: 1s;
+}

@@ -1,0 +1,17 @@
+.child{
+    margin: 200px;
+    padding: 80px;
+    background-color: darkcyan;
+    color: azure;
+    width: 500px;
+    height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    padding: 10px;
+    border-radius: 5px;
+}
