@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+}
+
+.font-display {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+@keyframes flyToProfile {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(42vw, -42vh) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.flying-tick {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 60;
+  color: #16a34a;
+  font-size: 90px;
+  font-weight: 700;
+  pointer-events: none;
+  animation: flyToProfile 1.2s ease-in forwards;
+}
