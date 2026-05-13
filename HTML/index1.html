@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Application Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div class="app-container">
+    
+    <div class="dashboard-layout">
+      <div class="card glow main-card">
+        
+        <div class="sidebar">
+          <div class="bank-logo" title="NationFirst Bank">🏦</div>
+          <div class="nav-item active" onclick="showToast('Dashboard', 'info')" title="Dashboard">🏠</div>
+          <div class="nav-item" onclick="showToast('Applications', 'info')" title="Applications">📋</div>
+          <div class="nav-item" onclick="showToast('Analytics', 'info')" title="Analytics">📊</div>
+          <div class="nav-item" onclick="showToast('Settings', 'info')" title="Settings">⚙️</div>
+          <div class="spacer"></div>
+          <div class="profile-icon" title="Profile">👤</div>
+        </div>
+
+        <div class="content-area">
+          
+          <div class="topbar">
+            <div class="serif topbar-brand">NationFirst Bank</div>
+            <div class="search-container">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input type="text" id="search-input" placeholder="Search borrower name or ID…" class="ifield search-input-field">
+              <div id="search-dropdown" class="search-dropdown hidden"></div>
+            </div>
+            
+            <div class="notif-container">
+              <button id="notif-btn" class="notif-btn">
+                <svg class="notif-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+                <span id="notif-badge" class="notif-badge">2</span>
+              </button>
+              <div id="notif-dropdown" class="notif-dropdown hidden">
+                <div class="notif-header">Notifications</div>
+                <div id="notif-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-area">
+            
+            <div id="borrower-tabs" class="tabs-container"></div>
+
+            <div class="section-header">
+              <h2 class="serif section-title">Borrower Risk Overview</h2>
+              <span id="live-time" class="live-badge">Live · </span>
+            </div>
+
+            <div class="grid-layout fade" id="dashboard-content">
+              
+              <div class="card p-18">
+                <div class="card-subtitle">Applicant Profile</div>
+                <div id="b-name" class="serif card-title"></div>
+                <div class="info-row"><span class="info-label">Borrower ID</span><span id="b-id" class="info-val b-id-color"></span></div>
+                <div class="info-row"><span class="info-label">Loan Requested</span><span id="b-loan" class="info-val b-loan-color"></span></div>
+                <div class="info-row"><span class="info-label">Income Type</span><span id="b-income" class="info-val"></span></div>
+              </div>
+
+              <div class="card p-18">
+                <div class="card-subtitle">AI Risk Score</div>
+                <div class="gauge-container">
+                  <svg width="180" height="108" viewBox="0 0 180 108">
+                    <defs>
+                      <linearGradient id="grd" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#4ade80"/><stop offset="50%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#f87171"/>
+                      </linearGradient>
+                      <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <path d="M 22 88 A 68 68 0 0 1 158 88" fill="none" stroke="#1e293b" stroke-width="13" stroke-linecap="round"/>
+                    <path id="gauge-fill" d="M 22 88 A 68 68 0 0 1 158 88" fill="none" stroke="url(#grd)" stroke-width="13" stroke-linecap="round" filter="url(#glow)"/>
+                    <circle id="gauge-dot" cx="22" cy="88" r="7" fill="#0f172a" stroke="#4ade80" stroke-width="3" filter="url(#glow)"/>
+                    <text id="gauge-score" x="90" y="80" text-anchor="middle" font-size="26" font-weight="800" fill="white" font-family="Outfit,sans-serif">0</text>
+                    <text id="gauge-label" x="90" y="96" text-anchor="middle" font-size="9" fill="#4ade80" font-weight="800" letter-spacing="1.5">LOW RISK</text>
+                    <text x="26" y="108" font-size="8" fill="#475569" font-weight="600">LOW</text>
+                    <text x="136" y="108" font-size="8" fill="#475569" font-weight="600">HIGH</text>
+                  </svg>
+                </div>
+                <div class="confidence-container">
+                  <div class="conf-header"><span>Model Confidence</span><span class="conf-val">90%</span></div>
+                  <div class="conf-bar-bg">
+                    <div class="conf-bar-overlay"></div>
+                    <div class="conf-dot"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card p-18">
+                <div class="card-subtitle">Key Risk Factors</div>
+                <div id="risk-factors"></div>
+              </div>
+
+              <div class="card p-18">
+                <div class="card-subtitle">Officer Decision</div>
+                
+                <div class="decision-btns">
+                  <button id="btn-approve" class="dBtn dBtn-approve" onclick="handleDecision('approve')">✅ Approve</button>
+                  <button id="btn-reject" class="dBtn dBtn-reject" onclick="handleDecision('reject')">❌ Reject</button>
+                  <button id="btn-conditional" class="dBtn dBtn-conditional" onclick="handleDecision('conditional')">⚡ Conditional</button>
+                </div>
+
+                <div id="decision-alert" class="decision-alert hidden"></div>
+
+                <div class="radio-group">
+                  <div id="radio-approve" class="radio-opt" onclick="handleDecision('approve')">
+                    <div class="radio-circle" id="rc-approve"><div class="radio-dot hidden" id="rd-approve"></div></div>
+                    <span class="radio-label">Approve</span>
+                  </div>
+                  <div id="radio-reject" class="radio-opt" onclick="handleDecision('reject')">
+                    <div class="radio-circle" id="rc-reject"><div class="radio-dot hidden" id="rd-reject"></div></div>
+                    <span class="radio-label">Reject</span>
+                  </div>
+                </div>
+
+                <select id="note-type" class="ifield mb-8">
+                  <option value="">Select note category…</option>
+                  <option value="Documentation">Needs more documents</option>
+                  <option value="Verification">Verify income source</option>
+                  <option value="Collateral">Collateral required</option>
+                  <option value="Follow-up">Schedule follow-up</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input type="text" id="note-text" placeholder="Type your note… (Enter to submit)" class="ifield mb-8">
+                <button class="btn-main full-width note-btn" onclick="addNote()">+ Add Note</button>
+
+                <div id="notes-list" class="notes-container hidden"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card glow form-panel">
+      <div class="form-header">
+        <button class="reset-btn" onclick="resetForm()">
+          <svg class="reset-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="form-title-container">
+          <div class="serif form-title">Loan Application</div>
+          <div class="form-subtitle">Complete all required fields</div>
+        </div>
+        <div class="spacer-32"></div>
+      </div>
+
+      <div id="success-view" class="success-view hidden fade">
+        <div class="success-icon checkIn">🎉</div>
+        <div class="serif success-title">Submitted!</div>
+        <div class="success-desc">Your application has been received. Our team will review it within 24 hours.</div>
+        <div class="success-box-green">
+          <div class="success-box-label">APPLICATION ID</div>
+          <div id="success-id" class="success-box-val"></div>
+        </div>
+        <div class="success-box-blue">
+          <div class="success-box-label mb-6">SUBMITTED DETAILS</div>
+          <div class="success-detail"><span class="detail-l">Name</span><span id="sd-name" class="detail-v"></span></div>
+          <div class="success-detail"><span class="detail-l">ID</span><span id="sd-id" class="detail-v"></span></div>
+          <div class="success-detail"><span class="detail-l">Source</span><span id="sd-source" class="detail-v"></span></div>
+          <div class="success-detail"><span class="detail-l">Income</span><span id="sd-income" class="detail-v"></span></div>
+        </div>
+        <button class="btn-main full-width" onclick="resetForm()" style="padding:13px; font-size:14px;">New Application</button>
+      </div>
+
+      <div id="form-view" class="form-view-container">
+        <div class="form-scroll-area">
+          <div class="form-group">
+            <label class="form-label">Applicant Name <span class="req">*</span></label>
+            <input type="text" id="f-name" placeholder="e.g. Rajesh Mishra" class="ifield">
+            <div id="err-name" class="err hidden">⚠ Full name is required</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Applicant ID <span class="req">*</span></label>
+            <input type="text" id="f-id" placeholder="e.g. 123456" class="ifield">
+            <div id="err-id" class="err hidden">⚠ Applicant ID is required</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Income Source <span class="req">*</span></label>
+            <select id="f-source" class="ifield">
+              <option value="">Select income source…</option>
+              <option>Agriculture</option><option>Salaried</option><option>Business</option>
+              <option>Freelance</option><option>Seasonal</option><option>Pension</option>
+            </select>
+            <div id="err-source" class="err hidden">⚠ Select an income source</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Monthly Income (avg) <span class="req">*</span></label>
+            <div class="input-with-prefix" id="wrap-income">
+              <span class="prefix">₹</span>
+              <input type="number" id="f-income" placeholder="10,000" class="prefix-input">
+            </div>
+            <div id="err-income" class="err hidden">⚠ Enter average monthly income</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Existing Loans</label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="f-noloans" class="accent-check">
+              <span id="lbl-noloans" class="checkbox-text">None — No existing loans</span>
+            </label>
+            <div class="input-with-prefix" id="wrap-loans">
+              <span class="prefix">₹</span>
+              <input type="number" id="f-loans" placeholder="20,000" class="prefix-input">
+            </div>
+            <div id="err-loans" class="err hidden">⚠ Enter loan amount or select None</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Documents</label>
+            <div class="file-drop" id="file-drop">
+              <input type="file" id="f-file" style="display:none" accept=".pdf,.jpg,.jpeg,.png">
+              <div id="file-empty">
+                <div class="file-icon">📎</div>
+                <div class="file-text-main">Click to upload documents</div>
+                <div class="file-text-sub">PDF, JPG, PNG · Max 10MB</div>
+              </div>
+              <div id="file-filled" class="hidden">
+                <div class="file-icon">📄</div>
+                <div id="file-name" class="file-name"></div>
+                <div id="file-size" class="file-text-sub mt-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button id="btn-submit" class="btn-main btn-submit" onclick="submitForm()">
+            Submit Application 🚀
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
