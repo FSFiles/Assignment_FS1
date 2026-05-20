@@ -1,0 +1,29 @@
+Step 1 : npm create vite@latest Project_Name
+Step 2 : npm install react-router-dom
+Step 3 :npm install tailwindcss @tailwindcss/vite
+Step 4 :
+File : vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(),tailwindcss()],
+})
+
+Step 5:
+File : index.css
+@import 'tailwindcss'
+
+Step 6 :
+File : main.jsx
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import { BrowserRouter } from 'react-router-dom'
+
+createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+)

@@ -1,0 +1,46 @@
+//Create a multi-step registration form (Next/Previous buttons).
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#step2,#step3{
+  display:none;
+}
+#step2:target{
+  display:block;
+}
+#step3:target{
+  display:block;
+}
+#step2:target #step1{
+  display:none;
+}
+#step3:target #step1,
+#step3:target #step2{
+  display:none;
+}
+</style>
+</head>
+<body>
+<h2>Registration Form</h2>
+<form>
+    <div id="step1">
+    <input type="text" placeholder="Enter Name"><br><br>
+    <a href="#step2">Next</a>
+  </div>
+
+  <div id="step2">
+    <input type="email" placeholder="Enter Email"><br><br>
+    <a href="#step1">Previous</a>
+    <a href="#step3">Next</a>
+  </div>
+
+  <div id="step3">
+    <input type="password" placeholder="Enter Password"><br><br>
+    <a href="#step2">Previous</a>
+    <button>Submit</button>
+  </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+// Create form with validation (required, pattern, email)
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+</head>
+<body>
+<h2>Registration Form</h2>
+<form>
+  Name:
+  <input type="text" required pattern="[A-Z a-z]+" placeholder="Enter Name">
+  <br><br>
+  Email:
+  <input type="email" required placeholder="Enter Email">
+  <br><br>
+  Password:
+  <input type="password" required pattern="[0-9]{6}" placeholder="Enter 6 Numbers">
+  <br><br>
+  <button type="submit">
+  Submit
+  </button>
+</form>
+</body>
+</html>
